@@ -19,18 +19,14 @@ public class PracticaLoops {
      * 
      */
     public int obtenerAleatorio(int limite) {
-        // TODO
-
-        return 0;
+        return generador.nextInt(limite);
     }
 
     /**
      * devuelve true si termina en 7, false en otro caso. Sin if
      */
     public boolean terminaEn7(int n) {         
-        // TODO
-
-        return true;
+        return n % 10 == 7;
     }
 
     /**
@@ -48,10 +44,17 @@ public class PracticaLoops {
      *  intercalarCeros(91002000) = 90102
      */
     public int intercalarCeros(int n) {
-        // TODO
-
-
-        return 0;
+        int resultado = 0;
+        int potencia = 0;
+        while (n != 0) {
+            int cifra = n % 10;
+            if (cifra != 0) {
+                resultado += cifra * Math.pow(10, potencia);
+                potencia += 2;
+            }
+            n /= 10;
+        }
+        return resultado;
     }
 
     /**
@@ -68,11 +71,17 @@ public class PracticaLoops {
      *  Utiliza solo bucles while
      */
     public void generarNumeros()   {
-        // TODO
-
-        
-        
-        
+        System.out.println("      ALEATORIO   CON CEROS INTERCALADOS"); 
+        int numero = obtenerAleatorio(100000);
+        if (terminaEn7(numero)) {
+            System.out.println("El primer valor generado ya terminaba en 7: " + numero);
+        }
+        while (numero != 0 && !terminaEn7(numero)) {
+            System.out.printf("%15d%25d\n", numero, intercalarCeros(numero));
+            numero = obtenerAleatorio(100000);
+        }
+        // No sabia si el numero que hace que el bucle se cierre tenia que aparecer en
+        // pantalla y como en las fotos no sale ninguno que acabe en 7 no lo he incluido.
     }
     
     /**
