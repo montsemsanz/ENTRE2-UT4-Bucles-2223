@@ -1,6 +1,6 @@
 import java.util.Random;
 /**
- *    
+ * @author Aitor Zubillaga Soria   
  */
 public class PracticaLoops {
     private final char ESPACIO = ' ';
@@ -19,18 +19,20 @@ public class PracticaLoops {
      * 
      */
     public int obtenerAleatorio(int limite) {
-        // TODO
-
-        return 0;
+        int numero = 0;
+        numero = generador.nextInt(limite);
+        return numero;
     }
 
     /**
      * devuelve true si termina en 7, false en otro caso. Sin if
      */
     public boolean terminaEn7(int n) {         
-        // TODO
+        if(n%10==7){
+            return true;
+        }
+        return false;
 
-        return true;
     }
 
     /**
@@ -48,10 +50,35 @@ public class PracticaLoops {
      *  intercalarCeros(91002000) = 90102
      */
     public int intercalarCeros(int n) {
-        // TODO
+        int numeroSinCeros = 0;
+        int guardadoN = n;
+        int i = 0;
+        int resto = 0;
+        while(guardadoN>0){
+            resto = guardadoN %10;
+            guardadoN = guardadoN/10;
+            if ( resto == 0){
 
+            }else{  
+                numeroSinCeros += resto * Math.pow(10, i);
+                i++;
 
-        return 0;
+            }
+        }
+        int numeroIntercalado = 0;
+        i = 0;
+        while(numeroSinCeros >0){
+            resto = numeroSinCeros % 10;
+            numeroSinCeros = numeroSinCeros/10;
+        if(i%2!=0){
+            i = i+1;
+             numeroIntercalado += resto * Math.pow(10, i);
+        }else{
+           numeroIntercalado += resto * Math.pow(10, i); 
+        }       
+        i++;  
+        }
+        return numeroIntercalado;
     }
 
     /**
@@ -68,13 +95,44 @@ public class PracticaLoops {
      *  Utiliza solo bucles while
      */
     public void generarNumeros()   {
-        // TODO
+        int aleatorio = 1;
+        
+        
+        System.out.println("      ALEATORIOS    CON CEROS INTERCALADOS");
+        for(int i = 0; aleatorio >0&&!(terminaEn7(aleatorio));i++){
+            int resto = 0;
+         aleatorio = obtenerAleatorio(100000);
+            int guardadoN = aleatorio;
+            int j=0;
+             while(guardadoN>0){
+            resto = guardadoN %10;
+            guardadoN = guardadoN/10;
+            j++;
+        }
+         guardadoN = aleatorio;
+         int guardadoIntercalado = intercalarCeros(guardadoN);
+          int k=0;
+          
+             while(guardadoIntercalado>0){
+            resto = guardadoIntercalado %10;
+            guardadoIntercalado = guardadoIntercalado/10;
+            k++;
+        }
+        String espaciosN = "";
+        String espaciosIntercalado = "";
+            while(15-j>0){
+                espaciosN +=ESPACIO;
+                j++;
+            }
+            while(25-k>0){
+                espaciosIntercalado +=ESPACIO;
+                k++;
+            }
+            
+            System.out.println(espaciosN+guardadoN + espaciosIntercalado+intercalarCeros(guardadoN));
+        }
 
-        
-        
-        
     }
-    
     /**
      *  Dibuja la letra indicada (ver figura en el enunciado)
      *  Con bucles for
@@ -87,22 +145,33 @@ public class PracticaLoops {
      *      
      */
     public void dibujarLetra(int grosor, int altura)    {
-        // TODO
+        for(int i = 0; grosor>i;i++){
+            escribirCaracter(CARACTER,altura);
+            
+        }
+         for(int i = 0; (altura-grosor)>i;i++){
+             int j = 0;
+             while((altura-grosor)/2>j){
+                System.out.print(ESPACIO);
+                j++;
+                
+             }
+            escribirCaracter(CARACTER,grosor);
+            
+        }
 
-        
-        
     }
-
     /**
      *  escribe n veces el caracter  indicado en 2 posiciones
      *  en la misma línea
      *  con bucles for
      */
     private void escribirCaracter(char caracter, int n)    {
-         // TODO
-         
-         
-         
-    }
+        String fila = "";
+        for(int i = 0; n>i;i++){
+         fila += caracter; 
+        }
+        System.out.println(fila);
 
+    }
 }

@@ -2,6 +2,7 @@ import java.util.Scanner;
 /**
  *   Clase de utilidades
  *   Incluye métodos estáticos
+ *   @author Aitor Zubillaga Soria  
  */
 public class Utilidades
 {
