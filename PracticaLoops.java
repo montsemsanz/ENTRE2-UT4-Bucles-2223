@@ -19,18 +19,14 @@ public class PracticaLoops {
      * 
      */
     public int obtenerAleatorio(int limite) {
-        // TODO
-
-        return 0;
+        return generador.nextInt(limite);
     }
 
     /**
      * devuelve true si termina en 7, false en otro caso. Sin if
      */
     public boolean terminaEn7(int n) {         
-        // TODO
-
-        return true;
+        return n % 10 == 7;
     }
 
     /**
@@ -48,10 +44,17 @@ public class PracticaLoops {
      *  intercalarCeros(91002000) = 90102
      */
     public int intercalarCeros(int n) {
-        // TODO
-
-
-        return 0;
+        int resultado = 0;
+        int potencia = 0;
+        while (n != 0) {
+            int cifra = n % 10;
+            if (cifra != 0) {
+                resultado += cifra * Math.pow(10, potencia);
+                potencia += 2;
+            }
+            n /= 10;
+        }
+        return resultado;
     }
 
     /**
@@ -67,12 +70,21 @@ public class PracticaLoops {
      *  
      *  Utiliza solo bucles while
      */
-    public void generarNumeros()   {
-        // TODO
-
-        
-        
-        
+    public void generarNumeros(int n)   {
+        System.out.println("      ALEATORIO   CON CEROS INTERCALADOS"); 
+        int numero = obtenerAleatorio(100000);
+        if (terminaEn7(numero)) {
+            System.out.println("El primer valor generado ya terminaba en 7: " + numero);
+        }
+        else if (n != 0){
+            System.out.printf("%15d%25d\n", numero, intercalarCeros(numero));
+        }
+        int contador = 0;
+        while (numero != 0 && !terminaEn7(numero) && contador != n) {
+            numero = obtenerAleatorio(100000);
+            System.out.printf("%15d%25d\n", numero, intercalarCeros(numero));
+            contador++;
+        }
     }
     
     /**
@@ -87,10 +99,15 @@ public class PracticaLoops {
      *      
      */
     public void dibujarLetra(int grosor, int altura)    {
-        // TODO
-
-        
-        
+        for (int i = 1; i <= grosor; i++) {
+            escribirCaracter(CARACTER, altura);
+            System.out.println();
+        }
+        for (int i = 1; i <= altura - grosor; i++) {
+            escribirCaracter(ESPACIO, altura / 2 - grosor / 2);
+            escribirCaracter(CARACTER, grosor);
+            System.out.println();
+        } 
     }
 
     /**
@@ -99,10 +116,9 @@ public class PracticaLoops {
      *  con bucles for
      */
     private void escribirCaracter(char caracter, int n)    {
-         // TODO
-         
-         
-         
+        for (int i = 1; i <= n; i++) {
+            System.out.printf("%2c", caracter);    
+        }
     }
 
 }
