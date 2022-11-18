@@ -96,10 +96,15 @@ public class PracticaLoops {
      *      
      */
     public void dibujarLetra(int grosor, int altura)    {
-        // TODO
-
-        
-        
+        for (int i = 1; i <= grosor; i++) {
+            escribirCaracter(CARACTER, altura);
+            System.out.println();
+        }
+        for (int i = 1; i <= altura - grosor; i++) {
+            escribirCaracter(ESPACIO, altura / 2 - grosor / 2);
+            escribirCaracter(CARACTER, grosor);
+            System.out.println();
+        } 
     }
 
     /**
@@ -108,10 +113,9 @@ public class PracticaLoops {
      *  con bucles for
      */
     private void escribirCaracter(char caracter, int n)    {
-         // TODO
-         
-         
-         
+        for (int i = 1; i <= n; i++) {
+            System.out.printf("%2c", caracter);    
+        }
     }
 
 }
