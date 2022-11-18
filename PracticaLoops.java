@@ -19,18 +19,20 @@ public class PracticaLoops {
      * 
      */
     public int obtenerAleatorio(int limite) {
-        // TODO
-
-        return 0;
+        int numero = 0;
+        numero = generador.nextInt(limite);
+        return numero;
     }
 
     /**
      * devuelve true si termina en 7, false en otro caso. Sin if
      */
     public boolean terminaEn7(int n) {         
-        // TODO
+        if(n%10==7){
+            return true;
+        }
+        return false;
 
-        return true;
     }
 
     /**
@@ -48,10 +50,22 @@ public class PracticaLoops {
      *  intercalarCeros(91002000) = 90102
      */
     public int intercalarCeros(int n) {
-        // TODO
+        int numeroSinCeros = 0;
+        int guardadoN = 0;
+        while(guardadoN>0){
+            int resto = guardadoN %10;
+            guardadoN = guardadoN/10;
+            int i = 0;
+            if ( resto == 0){
 
+            }else{  
+                numeroSinCeros += resto * Math.pow(10, i);
+            }
 
-        return 0;
+            i++;
+
+        }
+        return ;
     }
 
     /**
@@ -71,10 +85,7 @@ public class PracticaLoops {
         // TODO
 
         
-        
-        
     }
-    
     /**
      *  Dibuja la letra indicada (ver figura en el enunciado)
      *  Con bucles for
@@ -90,7 +101,6 @@ public class PracticaLoops {
         // TODO
 
         
-        
     }
 
     /**
@@ -99,9 +109,8 @@ public class PracticaLoops {
      *  con bucles for
      */
     private void escribirCaracter(char caracter, int n)    {
-         // TODO
-         
-         
+        // TODO
+
          
     }
 
