@@ -70,18 +70,21 @@ public class PracticaLoops {
      *  
      *  Utiliza solo bucles while
      */
-    public void generarNumeros()   {
+    public void generarNumeros(int n)   {
         System.out.println("      ALEATORIO   CON CEROS INTERCALADOS"); 
         int numero = obtenerAleatorio(100000);
         if (terminaEn7(numero)) {
             System.out.println("El primer valor generado ya terminaba en 7: " + numero);
         }
-        while (numero != 0 && !terminaEn7(numero)) {
+        else if (n != 0){
             System.out.printf("%15d%25d\n", numero, intercalarCeros(numero));
-            numero = obtenerAleatorio(100000);
         }
-        // No sabia si el numero que hace que el bucle se cierre tenia que aparecer en
-        // pantalla y como en las fotos no sale ninguno que acabe en 7 no lo he incluido.
+        int contador = 0;
+        while (numero != 0 && !terminaEn7(numero) && contador != n) {
+            numero = obtenerAleatorio(100000);
+            System.out.printf("%15d%25d\n", numero, intercalarCeros(numero));
+            contador++;
+        }
     }
     
     /**
